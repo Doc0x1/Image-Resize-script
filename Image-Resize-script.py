@@ -13,7 +13,7 @@ try:
 except ValueError:
     print("Value Error!\nValues entered are not integers!\nStopping script...")
     os.exit()
-if (type(resize_vals[0]) == int and resize_values[0] > 99) and (type(resize_vals[1]) == int and resize_vals[1] > 99):
+if (type(resize_vals[0]) == int and resize_vals[0] > 99) and (type(resize_vals[1]) == int and resize_vals[1] > 99):
     new_width, new_height = resize_vals
 else: 
     print("Error! Image resize values need to be integers greater than 99!\nStopping script...\n")
@@ -61,6 +61,7 @@ if copy_below_size:
             img.thumbnail((new_width, new_height))
             img.save(f"{dest_folder_path}/{resized_name}")
             print(f"Success! Saved resized image as {resized_name} in directory {dest_folder_path}\n")
+        except: print("ERROR! Something went wrong!")
 else:
     for file in file_list:
         try:
@@ -84,4 +85,5 @@ else:
             print("OSError exception occurred!")
 #---End image resizing phase---#
 
-print("Operation completed successfully.")
+print("Operation completed successfully.\n")
+print(f"Resized {len(file_list)} images to {resize_vals[0]}x{resize_vals[1]}!")
